@@ -490,3 +490,43 @@ transition:all .8s ease;
 opacity:1;
 transform:translateY(0);
 }
+/* WHY CHOOSE US */
+
+.features{
+background:white;
+}
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+margin-top:50px;
+}
+
+.feature-card{
+background:#fff;
+padding:35px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 12px 35px rgba(0,0,0,.08);
+transition:.35s;
+border-top:4px solid #0057b8;
+}
+
+.feature-card:hover{
+transform:translateY(-10px);
+}
+
+.icon{
+font-size:50px;
+margin-bottom:20px;
+}
+
+.feature-card h3{
+margin-bottom:15px;
+color:#0057b8;
+}
+
+.feature-card p{
+color:#666;
+}
