@@ -1019,3 +1019,107 @@ header.scrolled{
     background:#edf5ff;
 
 }
+/* ==========================
+   CONTACT
+========================== */
+
+.contact{
+    display:flex;
+    justify-content:space-between;
+    gap:70px;
+    padding:120px 8%;
+    background:#f8fbff;
+}
+
+.contact-info{
+    width:45%;
+}
+
+.contact-form{
+    width:50%;
+}
+
+.contact-info span{
+    color:#0057d8;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.contact-info h2{
+    font-family:'Manrope';
+    font-size:46px;
+    margin:20px 0;
+}
+
+.contact-info p{
+    color:#64748b;
+    line-height:1.8;
+}
+
+.info-box{
+    margin-top:40px;
+}
+
+.info-item{
+    background:white;
+    padding:25px;
+    margin-bottom:20px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+}
+
+.info-item h4{
+    color:#0057d8;
+    margin-bottom:8px;
+}
+
+.contact-form form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.contact-form input,
+.contact-form textarea{
+
+    padding:18px;
+
+    border:1px solid #dbe4ef;
+
+    border-radius:14px;
+
+    font-size:16px;
+
+    font-family:inherit;
+
+}
+
+.contact-form textarea{
+    resize:vertical;
+}
+
+.contact-form button{
+
+    padding:18px;
+
+    background:#0057d8;
+
+    color:white;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.contact-form button:hover{
+    background:#0048b0;
+}
