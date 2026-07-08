@@ -964,3 +964,58 @@ header.scrolled{
     background:#d9e8ff;
     margin-top:43px;
 }
+/* ==========================
+   CTA
+========================== */
+
+.cta{
+
+    padding:120px 8%;
+
+    background:linear-gradient(135deg,#0057d8,#007ef5);
+
+    text-align:center;
+
+    color:white;
+
+}
+
+.cta h2{
+
+    font-size:52px;
+
+    margin-bottom:25px;
+
+    font-family:'Manrope';
+
+}
+
+.cta p{
+
+    max-width:760px;
+
+    margin:auto;
+
+    line-height:1.9;
+
+    font-size:20px;
+
+    opacity:.95;
+
+    margin-bottom:45px;
+
+}
+
+.cta .primary{
+
+    background:white;
+
+    color:#0057d8;
+
+}
+
+.cta .primary:hover{
+
+    background:#edf5ff;
+
+}
