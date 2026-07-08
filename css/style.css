@@ -368,3 +368,62 @@ nav a:hover{
     font-weight:600;
 
 }
+/* =========================
+   Sticky Header on Scroll
+========================= */
+
+header.scrolled{
+    background:rgba(255,255,255,.95);
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+/* =========================
+   Fade Animation
+========================= */
+
+.animate{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all .8s ease;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================
+   Floating Animation
+========================= */
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-18px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+
+.one{
+    animation:float 6s ease-in-out infinite;
+}
+
+.two{
+    animation:float 8s ease-in-out infinite;
+}
+
+.three{
+    animation:float 5s ease-in-out infinite;
+}
+
+.floating-card{
+    animation:float 7s ease-in-out infinite;
+}
