@@ -685,3 +685,132 @@ header.scrolled{
     transform:translateY(-10px);
     transition:.4s;
 }
+/* ==========================
+   QUALITY
+========================== */
+
+.quality{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:70px;
+
+    padding:120px 8%;
+
+    background:white;
+
+}
+
+.quality-left{
+
+    width:50%;
+
+}
+
+.quality-right{
+
+    width:45%;
+
+}
+
+.quality-right img{
+
+    width:100%;
+
+    border-radius:25px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.08);
+
+}
+
+.quality-left span{
+
+    color:#0057d8;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+.quality-left h2{
+
+    font-size:48px;
+
+    margin:20px 0;
+
+    font-family:'Manrope';
+
+    color:#0f172a;
+
+}
+
+.quality-left p{
+
+    color:#64748b;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+}
+
+.quality-list{
+
+    margin-top:40px;
+
+}
+
+.quality-item{
+
+    display:flex;
+
+    gap:20px;
+
+    margin-bottom:30px;
+
+}
+
+.tick{
+
+    width:55px;
+
+    height:55px;
+
+    background:#0057d8;
+
+    color:white;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    flex-shrink:0;
+
+}
+
+.quality-item h3{
+
+    margin-bottom:8px;
+
+    color:#0f172a;
+
+}
+
+.quality-item p{
+
+    color:#64748b;
+
+}
