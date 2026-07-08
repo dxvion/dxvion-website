@@ -597,15 +597,36 @@ header.scrolled{
 }
 
 .icon{
-    width:70px;
-    height:70px;
-    border-radius:18px;
+
+    width:72px;
+    height:72px;
+
+    border-radius:20px;
+
     display:flex;
-    align-items:center;
     justify-content:center;
-    font-size:34px;
+    align-items:center;
+
     background:#edf5ff;
+
+    color:#0057d8;
+
+    font-size:30px;
+
     margin-bottom:25px;
+
+    transition:.3s;
+
+}
+
+.why-card:hover .icon{
+
+    background:#0057d8;
+
+    color:white;
+
+    transform:rotate(-8deg) scale(1.08);
+
 }
 
 .why-card h3{
