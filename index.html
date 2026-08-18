@@ -118,7 +118,22 @@
 
 <section class="contact animate" id="contact">
   <div class="contact-info"><span>CONTACT DXVION</span><h2>Let's Start a Conversation</h2><p>For product sourcing, distribution, export or partnership enquiries, send us your requirements and business details.</p><div class="info-box"><div class="info-item"><h4>Email</h4><p><a href="mailto:info@dxvion.com">info@dxvion.com</a></p></div><div class="info-item"><h4>Business</h4><p>Dxvion Lifesciences Pvt. Ltd.</p></div><div class="info-item"><h4>Focus</h4><p>Pharmaceutical Supply &amp; Exports</p></div></div></div>
-  <div class="contact-form"><form id="enquiry-form"><input id="name" type="text" placeholder="Full Name" autocomplete="name" required><input id="email" type="email" placeholder="Email Address" autocomplete="email" required><input id="company" type="text" placeholder="Company Name" autocomplete="organization"><input id="country" type="text" placeholder="Country" autocomplete="country-name"><textarea id="message" rows="6" placeholder="Tell us about your product, quantity, destination and requirement" required></textarea><button type="submit">Prepare Inquiry</button><small class="form-note">Your email application will open with the enquiry details addressed to Dxvion.</small></form></div>
+  <div class="contact-form">
+    <form action="https://formsubmit.co/info@dxvion.com" method="POST">
+      <input type="hidden" name="_subject" value="New Dxvion website enquiry">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="_next" value="https://dxvion.com/thank-you.html">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+      <input name="name" type="text" placeholder="Full Name" autocomplete="name" required>
+      <input name="email" type="email" placeholder="Email Address" autocomplete="email" required>
+      <input name="company" type="text" placeholder="Company Name" autocomplete="organization">
+      <input name="country" type="text" placeholder="Country" autocomplete="country-name">
+      <textarea name="message" rows="6" placeholder="Tell us about your product, quantity, destination and requirement" required></textarea>
+      <button type="submit">Send Inquiry</button>
+      <small class="form-note">Your enquiry will be securely submitted to Dxvion. We will use the information only to respond to your business enquiry.</small>
+    </form>
+  </div>
 </section>
 </main>
 
