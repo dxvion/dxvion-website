@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dxvion.com/sitemap.xml
