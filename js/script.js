@@ -1,47 +1,43 @@
 // Dxvion interactions
-const header = document.querySelector("header");
-
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) header.classList.add("scrolled");
-    else header.classList.remove("scrolled");
-});
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => header?.classList.toggle('scrolled', window.scrollY > 50), {passive:true});
 
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add("show");
-    });
-}, { threshold: 0.2 });
+  entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('show'); });
+}, {threshold:0.15});
+document.querySelectorAll('.animate').forEach((el) => observer.observe(el));
 
-document.querySelectorAll(".animate").forEach((el) => observer.observe(el));
+// Mobile navigation
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('nav');
+menuToggle?.addEventListener('click', () => {
+  const open = nav?.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', String(!!open));
+  menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+  menuToggle.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+});
+nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+  nav.classList.remove('open');
+  menuToggle?.setAttribute('aria-expanded','false');
+  if (menuToggle) { menuToggle.setAttribute('aria-label','Open navigation'); menuToggle.innerHTML='<i class="fa-solid fa-bars"></i>'; }
+}));
 
-// Load the refinement layer without disturbing the original stylesheet.
-const refinement = document.createElement("link");
-refinement.rel = "stylesheet";
-refinement.href = "css/refinement.css";
-document.head.appendChild(refinement);
-
-// Keep the public site factual: replace old placeholder/unsupported counters and claims.
-const statReplacements = [
-    ["20+", "Global"],
-    ["20+", "Global"],
-    ["150+", "Growing"],
-    ["150+", "Portfolio"],
-    ["100%", "Quality"],
-    ["24/7", "Direct"]
-];
-const statLabels = ["Market Focus", "Product Portfolio", "Quality Commitment", "Business Support"];
-const statBlocks = document.querySelectorAll(".stats > div");
-statBlocks.forEach((block, i) => {
-    const h2 = block.querySelector("h2");
-    const p = block.querySelector("p");
-    if (h2) h2.textContent = statReplacements[i]?.[0] || h2.textContent;
-    if (p) p.textContent = statLabels[i] || p.textContent;
+// Prepare a real enquiry in the visitor's email client. No personal data is sent to a third-party form service.
+document.querySelector('#enquiry-form')?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const value = (id) => document.getElementById(id)?.value.trim() || '';
+  const subject = `Dxvion business enquiry${value('company') ? ` - ${value('company')}` : ''}`;
+  const body = [
+    `Name: ${value('name')}`,
+    `Email: ${value('email')}`,
+    `Company: ${value('company') || 'Not provided'}`,
+    `Country: ${value('country') || 'Not provided'}`,
+    '',
+    'Requirement:',
+    value('message')
+  ].join('\n');
+  window.location.href = `mailto:info@dxvion.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
 
-const qualityCard = document.querySelector(".floating-card h3");
-const qualityCardText = document.querySelector(".floating-card p");
-if (qualityCard) qualityCard.textContent = "QUALITY";
-if (qualityCardText) qualityCardText.textContent = "Trusted manufacturing partners";
-
-// Product links in the footer should return to the product section instead of dead '#'.
-document.querySelectorAll("footer a[href='#']").forEach((link) => link.href = "#products");
+// Prevent broken product footer links from returning visitors to the top of the page.
+document.querySelectorAll('footer a[href="#"]').forEach((link) => link.setAttribute('href','#products'));
