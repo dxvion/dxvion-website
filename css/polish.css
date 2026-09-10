@@ -1,0 +1,129 @@
+/* Dxvion production polish — accessibility, resilience and utility pages */
+
+/* Keep content visible without JavaScript; animate only when JS is active. */
+.animate{opacity:1;transform:none}
+.js .animate{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+.js .animate.show{opacity:1;transform:none}
+
+.skip-link{
+  position:fixed;
+  left:18px;
+  top:12px;
+  z-index:2000;
+  padding:10px 14px;
+  border-radius:10px;
+  color:#fff;
+  background:#082f67;
+  text-decoration:none;
+  font-weight:700;
+  transform:translateY(-160%);
+  transition:transform .2s ease;
+}
+.skip-link:focus{transform:translateY(0)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
+  outline:3px solid rgba(5,185,207,.72);
+  outline-offset:3px;
+}
+
+.office-map-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-top:16px;
+  color:#075fc9;
+  font-size:12px;
+  font-weight:700;
+  text-decoration:none;
+}
+.office-map-link:hover{text-decoration:underline}
+.form-privacy{
+  margin:0!important;
+  color:#6b7f9d!important;
+  font-size:10px!important;
+  line-height:1.55!important;
+}
+.form-privacy a{color:#075fc9;font-weight:700}
+body.nav-open{overflow:hidden}
+
+/* Consistent legal and utility pages. */
+.legal-main,.utility-main{
+  min-height:72vh;
+  padding:70px clamp(20px,6vw,100px) 90px;
+  background:
+    radial-gradient(circle at 88% 4%,rgba(5,185,207,.10),transparent 26%),
+    linear-gradient(180deg,#f8fcff,#fff);
+}
+.legal-card,.utility-card{
+  width:min(920px,100%);
+  margin:0 auto;
+  padding:clamp(28px,5vw,58px);
+  border:1px solid #d6e6f2;
+  border-radius:24px;
+  background:#fff;
+  box-shadow:0 18px 55px rgba(8,47,103,.08);
+}
+.legal-card h1,.utility-card h1{
+  margin:0 0 18px;
+  color:#082f67;
+  font-family:"Manrope",sans-serif;
+  font-size:clamp(38px,5vw,58px);
+  line-height:1.08;
+  letter-spacing:-.035em;
+}
+.legal-card h2{
+  margin:34px 0 8px;
+  color:#0a4389;
+  font-family:"Manrope",sans-serif;
+  font-size:22px;
+}
+.legal-card p,.legal-card li,.utility-card p{color:#4e688c;line-height:1.75}
+.legal-card ul{padding-left:22px}
+.legal-card a,.utility-card a{color:#075fc9}
+.legal-meta{margin:0 0 28px;color:#7185a1!important;font-size:13px}
+.back-link{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin-bottom:24px;
+  color:#075fc9;
+  font-weight:700;
+  text-decoration:none;
+}
+.utility-card{text-align:center;max-width:760px}
+.utility-icon{
+  width:76px;
+  height:76px;
+  margin:0 auto 22px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  color:#fff;
+  font-size:30px;
+  background:linear-gradient(135deg,#05b9cf,#075fc9);
+  box-shadow:0 16px 35px rgba(5,95,201,.16);
+}
+.utility-card .btn-primary{margin-top:16px}
+
+@media (max-width:920px){
+  .site-header nav{
+    max-height:calc(100vh - 94px);
+    overflow-y:auto;
+  }
+}
+
+@media (max-width:620px){
+  .legal-main,.utility-main{padding:46px 16px 60px}
+  .legal-card,.utility-card{border-radius:18px}
+}
+
+@media (max-width:420px){
+  .hero-copy h1{font-size:40px}
+  .section-copy h2,.section-heading h2,.people-intro h2,.sustainability-copy h2,.news-copy h2,.contact-head h2{font-size:34px}
+  .journey{gap:9px}
+  .journey strong{font-size:12px}
+  .journey span{font-size:10px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .js .animate{opacity:1;transform:none}
+}
