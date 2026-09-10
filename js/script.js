@@ -7,7 +7,7 @@ const updateHeader = () => header?.classList.toggle('scrolled', window.scrollY >
 updateHeader();
 window.addEventListener('scroll', updateHeader, { passive: true });
 
-// Reveal sections progressively, but keep the page usable if IntersectionObserver is unavailable.
+// Reveal sections progressively. Content remains visible when JavaScript is unavailable.
 const animated = document.querySelectorAll('.animate');
 if ('IntersectionObserver' in window) {
   const revealObserver = new IntersectionObserver((entries) => {
@@ -24,23 +24,41 @@ if ('IntersectionObserver' in window) {
 }
 
 // Mobile navigation.
+const closeMenu = ({ returnFocus = false } = {}) => {
+  if (!nav?.classList.contains('open')) return;
+  nav.classList.remove('open');
+  document.body.classList.remove('nav-open');
+  menuToggle?.setAttribute('aria-expanded', 'false');
+  if (menuToggle) {
+    menuToggle.setAttribute('aria-label', 'Open navigation');
+    menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    if (returnFocus) menuToggle.focus();
+  }
+};
+
 menuToggle?.addEventListener('click', () => {
   const open = nav?.classList.toggle('open');
+  document.body.classList.toggle('nav-open', !!open);
   menuToggle.setAttribute('aria-expanded', String(!!open));
   menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
   menuToggle.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
 });
 
-nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-  nav.classList.remove('open');
-  menuToggle?.setAttribute('aria-expanded', 'false');
-  if (menuToggle) {
-    menuToggle.setAttribute('aria-label', 'Open navigation');
-    menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
-  }
-}));
+nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => closeMenu()));
 
-// Highlight the section currently being viewed.
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeMenu({ returnFocus: true });
+});
+
+document.addEventListener('click', (event) => {
+  if (nav?.classList.contains('open') && header && !header.contains(event.target)) closeMenu();
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 920) closeMenu();
+}, { passive: true });
+
+// Highlight the section currently being viewed on the one-page homepage.
 const navLinks = [...(nav?.querySelectorAll('a[href^="#"]') || [])];
 const sections = navLinks
   .map((link) => document.querySelector(link.getAttribute('href')))
@@ -55,7 +73,7 @@ if ('IntersectionObserver' in window && sections.length) {
     navLinks.forEach((link) => {
       const isActive = link.getAttribute('href') === `#${visible.target.id}`;
       link.classList.toggle('active', isActive);
-      if (isActive) link.setAttribute('aria-current', 'page');
+      if (isActive) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
   }, { threshold: [0.18, 0.35, 0.55], rootMargin: '-80px 0px -45% 0px' });
