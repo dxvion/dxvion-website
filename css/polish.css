@@ -45,6 +45,17 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .form-privacy a{color:#075fc9;font-weight:700}
 body.nav-open{overflow:hidden}
 
+/* Footer logo: never render the legacy whitespace-heavy bitmap here. */
+.footer-brand img{display:none!important}
+.footer-brand::before{
+  content:"";
+  display:block;
+  width:180px;
+  height:54px;
+  flex:0 0 auto;
+  background:url("../images/footer-logo.svg") center/contain no-repeat;
+}
+
 /* Contact directory: five addresses should read as a clean directory rather
    than five narrow boxes squeezed across one row. */
 .contact-directory{
@@ -164,6 +175,7 @@ body.nav-open{overflow:hidden}
   .legal-card,.utility-card{border-radius:18px}
   .contact-directory{display:grid;grid-template-columns:1fr;gap:10px}
   .contact-directory a{max-width:none;min-height:78px}
+  .footer-brand::before{width:165px;height:48px}
 }
 
 @media (max-width:420px){
